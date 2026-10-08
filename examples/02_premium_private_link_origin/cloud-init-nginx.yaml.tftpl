@@ -1,0 +1,22 @@
+#cloud-config
+package_update: true
+packages:
+  - nginx
+write_files:
+  - path: /var/www/html/health
+    permissions: "0644"
+    content: |
+      healthy
+  - path: /var/www/html/index.html
+    permissions: "0644"
+    content: |
+      <!doctype html>
+      <html lang="en">
+      <head><meta charset="utf-8"><title>FoggyKitchen private Front Door origin</title></head>
+      <body>
+        <h1>FoggyKitchen private Front Door origin</h1>
+        <p>Path: <strong>Front Door Premium - Private Link - Application Gateway - NGINX</strong></p>
+      </body>
+      </html>
+runcmd:
+  - [systemctl, enable, --now, nginx]

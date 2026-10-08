@@ -1,0 +1,12 @@
+resource_group_name = "fk-frontdoor-failover-rg"
+name_prefix         = "fk-fd-failover"
+location            = "westeurope"
+standby_location    = "northeurope"
+vm_size             = "Standard_B1s"
+
+tags = {
+  project = "foggykitchen"
+  module  = "terraform-az-fk-frontdoor"
+  example = "01_public_priority_failover"
+  env     = "dev"
+}

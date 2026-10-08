@@ -1,0 +1,11 @@
+resource_group_name = "fk-frontdoor-private-link-rg"
+location            = "westeurope"
+name_prefix         = "fk-fd-private"
+vm_size             = "Standard_B1s"
+
+tags = {
+  project = "foggykitchen"
+  module  = "terraform-az-fk-frontdoor"
+  example = "02_premium_private_link_origin"
+  env     = "dev"
+}

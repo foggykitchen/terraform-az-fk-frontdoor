@@ -1,0 +1,27 @@
+#cloud-config
+package_update: true
+packages:
+  - nginx
+
+write_files:
+  - path: /var/www/html/index.html
+    owner: root:root
+    permissions: '0644'
+    content: |
+      <!doctype html>
+      <html lang="en">
+      <head><meta charset="utf-8"><title>FoggyKitchen Front Door failover</title></head>
+      <body>
+        <h1>FoggyKitchen Front Door failover</h1>
+        <p>Region: <strong>${region_name}</strong></p>
+        <p>Role: <strong>${role_name}</strong></p>
+      </body>
+      </html>
+  - path: /var/www/html/health
+    owner: root:root
+    permissions: '0644'
+    content: healthy
+
+runcmd:
+  - systemctl enable nginx
+  - systemctl restart nginx
